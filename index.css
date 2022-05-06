@@ -1,0 +1,260 @@
+:root {
+  --gray0: #f8f8f8;
+  --gray1: #dbe1e8;
+  --gray2: #b2becd;
+  --gray3: #6c7983;
+  --gray4: #454e56;
+  --gray5: #2a2e35;
+  --gray6: #12181b;
+  --blue: #0084a5;
+  --purple: #a82dd1;
+  --yellow: #fff565;
+  --padding: calc(100% - 5rem);
+}
+
+.light {
+  --bg: var(--gray0);
+  --bg-nav: linear-gradient(to right, var(--gray1), var(--gray3));
+  --bg-dropdown: var(--gray0);
+  --text: var(--gray6);
+  --border-color: var(--blue);
+  --bg-solar: var(--yellow);
+}
+
+.dark {
+  --bg: var(--gray5);
+  --bg-nav: linear-gradient(to right, var(--gray5), var(--gray6));
+  --bg-dropdown: var(--gray6);
+  --text: var(--gray0);
+  --border-color: var(--purple);
+  --bg-solar: var(--blue);
+}
+
+.solar {
+  --gray0: #fbffd4;
+  --gray1: #f7f8d0;
+  --gray2: #b6f880;
+  --gray3: #5ec72d;
+  --gray4: #3ea565;
+  --gray5: #005368;
+  --gray6: #003d4c;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  transition: background 500ms ease-in-out, color 1000ms ease-in-out;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+nav {
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 2.5rem;
+  background-image: var(--bg-nav);
+  align-items: center;
+}
+
+nav i {
+  font-size: 1.5rem;
+}
+
+.header {
+  clip-path: polygon(50% 0%, 100% 0, 100% 65%, 50% 100%, 0 65%, 0 0);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 3.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  background-image: var(--bg-nav);
+  font-style: italic;
+  line-height: 0.9;
+  font-weight: 200;
+}
+
+.header i {
+  font-size: 7rem;
+}
+
+@keyframes color-rotate {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.header i:hover {
+  animation: color-rotate 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  cursor: pointer;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 55%;
+  font-size: 1rem;
+  margin: auto;
+}
+
+.login h2 {
+  text-align: left;
+  font-style: italic;
+}
+
+.login input {
+  width: 95%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  margin: auto;
+  margin-top: 0.5rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: var(--text);
+  color: var(--bg);
+}
+
+.login button {
+  width: 25%;
+  padding: 0.8rem;
+  margin: auto;
+  margin-top: 0.9rem;
+  background-color: var(--text);
+  color: var(--bg);
+  border: none;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+#loginlockicon {
+  font-size: 5rem;
+}
+
+.message_header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 2.5rem;
+  align-items: center;
+}
+
+.messagebody {
+  overflow-y: scroll;
+  background-color: var(--gray6);
+  min-height: 50vh;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column-reverse;
+  width: var(--padding);
+  margin: auto;
+}
+
+.chat {
+  display: flex;
+  text-align: right;
+  margin-right: 0;
+  align-items: flex-end;
+  flex-direction: column;
+  align-content: flex-end;
+}
+
+.chat a {
+  position: relative;
+  padding: 1em;
+  border-radius: 16px;
+  margin: 1em;
+  background-color: var(--bg);
+  font-weight: 700;
+}
+
+.send {
+  display: flex;
+  align-items: center;
+  width: var(--padding);
+  margin: auto;
+}
+
+.send input {
+  width: 80%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  margin: auto;
+  margin-top: 0.5rem;
+  background-color: var(--text);
+  color: var(--bg);
+  border: none;
+}
+
+.send button {
+  width: 20%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  margin: auto;
+  margin-top: 0.5rem;
+  background-color: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--text);
+  border: none;
+  text-decoration: underline;
+  text-decoration-color: var(--blue);
+}
+
+.logoutbtn button {
+  padding: 0.9rem;
+  font-size: 1rem;
+  margin: auto;
+  margin-top: 0.5rem;
+  background-color: var(--bg);
+  color: var(--text);
+  border: none;
+  text-decoration: underline;
+  text-decoration-color: var(--blue);
+}
+
+@media only screen and (max-width: 600px) {
+  :root {
+    --padding: calc(100% - 1rem);
+  }
+  .send input {
+    width: 70%;
+  }
+
+  .send button {
+    width: 30%;
+  }
+  .message_header {
+    padding: 0px 0.5rem;
+  }
+  nav {
+    padding: 0px 0.5rem;
+  }
+  .login {
+    width: 99%;
+    font-size: 1rem;
+    margin: auto;
+  }
+  .login input {
+    width: 95%;
+    padding: 1rem 0rem;
+  }
+
+  .login button {
+    width: 55%;
+  }
+  #loginlockicon {
+    margin-top: 10px;
+    font-size: 4rem;
+  }
+  .header i {
+    font-size: 5rem;
+  }
+}

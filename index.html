@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <title>Chat</title>
+  </head>
+  <body onload="monitorauth()" class="dark">
+    <div class="app">
+      <nav>
+        <div class="nav_logo">
+          <i id="logo" class="fa-brands fa-rocketchat"></i>
+        </div>
+        <div class="nav_btns">
+          <a id="theme"><i class="fa-solid fa-moon"></i></a>
+        </div>
+      </nav>
+      <div id="header" class="header">
+        <i class="fa-brands fa-rocketchat"></i>
+        <h1>CHAT APP</h1>
+      </div>
+      <div id="login" class="login">
+        <i id="loginlockicon" class="fa-solid fa-lock"></i>
+        <h1>Login Or Create An Account</h1>
+        <h2>Login</h2>
+        <input type="text" id="email" placeholder="Email..." />
+        <br />
+        <input type="password" id="pass" placeholder="Password..." />
+        <br />
+        <button onclick="loginemailpassword()">
+          Login <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <br />
+        <h2>Or Sign Up</h2>
+        <input type="text" id="emailsignup" placeholder="Email..." />
+        <br />
+        <input type="password" id="passsignup" placeholder="Password..." />
+        <br />
+        <button onclick="createaccount()">
+          Sign Up <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+      <div onload="monitorauth()" class="message" id="message">
+        <div class="message_header">
+          <div class="logo">
+            <h1>CHATAPP</h1>
+          </div>
+          <div class="logoutbtn">
+            <button onclick="logout()">
+              Logout <i class="fa-solid fa-lock"></i>
+            </button>
+          </div>
+        </div>
+        <div class="messagebody">
+          <div id="chat" class="chat"></div>
+        </div>
+        <div class="send">
+          <input
+            type="text"
+            id="messagecontent"
+            placeholder="Type a message..."
+          />
+          <button onclick="sendmessage()">Send</button>
+        </div>
+      </div>
+    </div>
+    <br />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
