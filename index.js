@@ -28,12 +28,25 @@ const auth = firebase.auth();
 var database = firebase.database().ref("databasename");
 
 function sendmessage() {
-  var message = document.getElementById("messagecontent").value;
-  var inputform = database.push();
-  inputform.set({
-    message: message,
-  });
-  document.getElementById("messagecontent").value = "";
+  //check if user is logged in
+  const monitorauth = async () => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        var message = document.getElementById("messagecontent").value;
+        var inputform = database.push();
+        inputform.set({
+          message: message,
+        });
+        document.getElementById("messagecontent").value = "";
+      } else {
+        document.getElementById("message").style.display = "none";
+        document.getElementById("header").style.display = "block";
+        document.getElementById("login").style.display = "block";
+        document.getElementById("logo").style.color = "transparent";
+      }
+    });
+  };
+  monitorauth();
 }
 
 //get data from firebase
@@ -43,18 +56,30 @@ database.on("child_added", function (snapshot) {
 
 //get all data from firebase
 database.on("value", function (snapshot) {
-  document.getElementById("chat").innerHTML = "";
-  var data = snapshot;
-  var s = data.val();
-  var k = Object.keys(s);
-  for (var i = 0; i < k.length; i++) {
-    var j = k[i];
-    const para = document.createElement("a");
-    const node = document.createTextNode(s[j].message);
-    para.appendChild(node);
-    const element = document.getElementById("chat");
-    element.appendChild(para);
-  }
+  const monitorauth = async () => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        document.getElementById("chat").innerHTML = "";
+        var data = snapshot;
+        var s = data.val();
+        var k = Object.keys(s);
+        for (var i = 0; i < k.length; i++) {
+          var j = k[i];
+          const para = document.createElement("a");
+          const node = document.createTextNode(s[j].message);
+          para.appendChild(node);
+          const element = document.getElementById("chat");
+          element.appendChild(para);
+        }
+      } else {
+        document.getElementById("message").style.display = "none";
+        document.getElementById("header").style.display = "block";
+        document.getElementById("login").style.display = "block";
+        document.getElementById("logo").style.color = "transparent";
+      }
+    });
+  };
+  monitorauth();
 });
 
 //login with username and password
