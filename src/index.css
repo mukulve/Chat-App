@@ -1,0 +1,104 @@
+:root {
+  --bg: #121212;
+  --purple: #bb86fc;
+  --aqua: #03dac6;
+  --color: white;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--color);
+  padding: 0;
+  margin: 0;
+}
+
+header,
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+header,
+main,
+footer {
+  padding: 1rem 2rem;
+}
+
+header button,
+.Login button,
+footer button {
+  background-color: var(--purple);
+  border: none;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border-radius: 5px;
+}
+
+.Login {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+main {
+  height: calc(100vh - 120px);
+}
+
+footer input[type="text"] {
+  width: calc(100vw - 4rem);
+  padding-right: 115.86px;
+  border: none;
+  height: fit-content;
+  font-size: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 0.75rem;
+}
+
+footer button {
+  border-radius: 0;
+  margin-left: -115.86px;
+}
+
+.messages {
+  overflow-y: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+}
+
+.messages h3 {
+  background-color: var(--aqua);
+  color: var(--bg);
+  padding: 0.75rem 2rem;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+@media screen and (max-width: 550px) {
+  header,
+  main,
+  footer {
+    padding: 1rem 1rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  header,
+  main,
+  footer {
+    padding: 0.5rem 0.5rem;
+  }
+}
